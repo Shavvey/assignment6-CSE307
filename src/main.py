@@ -4,9 +4,9 @@ import numpy as np
 
 def problem1():
     my_set: set[str] = {"a", "b", "c", "d"}
-    # NOTE: because a set doesn't have a defined ordering
+    # ERROR because a set doesn't have a defined ordering
     # we have to convert it into a list first, before constructing the Series
-    s1 = pd.Series(my_set)
+    s1 = pd.Series(list(my_set))
     print("== SET ==")
     print(s1)
 
@@ -232,7 +232,6 @@ def problem5():
 
     # (2 points) Use hierarchical indexing so that S0 is used as the second level index
     DF1_2 = DF1_2.set_index("S0", append=True)
-    print(DF1_2)
 
     # (3 points) Group by the index and concatenate the values
     grouped1 = DF1_2.groupby(level=0).aggregate(lambda col: "".join(col.astype(str)))
@@ -244,6 +243,15 @@ def problem5():
 
 
 def main():
+    print("== PROBLEM 1 ==")
+    problem1()
+    print("== PROBLEM 2 ==")
+    problem2()
+    print("== PROBLEM 3 ==")
+    problem3()
+    print("== PROBLEM 4 ==")
+    problem4()
+    print("== PROBLEM 5 ==")
     problem5()
 
 
